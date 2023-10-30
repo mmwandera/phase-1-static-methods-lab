@@ -11,17 +11,28 @@ class Formatter {
   }
 
   // Write a method static titleize that takes in a string and capitalizes all words in a sentence except the, a, an, but, of, and, for, at, by, and from; and always capitalizes the first word.
-  static titleize(string) {
-    const exemptedWords = ['the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by', 'from'];
-    const words = string.split(' ');
-    const titleizedWords = words.map((word, index) => {
+// Define a static method named titleize, which takes a string as an argument
+static titleize(string) {
+  // Define an array of words that should remain lowercase
+  const exemptedWords = ['the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by', 'from'];
+  
+  // Split the input string into an array of words
+  const words = string.split(' ');
+
+  // Map over each word in the words array and perform a specific operation
+  const titleizedWords = words.map((word, index) => {
+      // Check if the current word is at the 0th index or not included in the exemptedWords array
       if (index === 0 || !exemptedWords.includes(word)) {
-        return this.capitalize(word);
+          // If the word meets the conditions, capitalize the first letter using the capitalize function
+          return this.capitalize(word);
       } else {
-        return word;
+          // If the word is in the exemptedWords array or is not at the 0th index, leave it as is
+          return word;
       }
-    });
-    
-    return titleizedWords.join(' ');
-  }
+  });
+  
+  // Join the modified words back into a string and return the final result
+  return titleizedWords.join(' ');
+}
+
 }
